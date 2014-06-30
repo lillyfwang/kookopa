@@ -1,0 +1,43 @@
+body {
+font-family: "Georgia, Utopia, 'Times New Roman', Times, serif";
+background: white;
+}
+
+h1, h2, h3, h5, h6, h7{
+font-family: "Georgia, Utopia, 'Times New Roman', Times, serif";
+}
+
+.section_one, .section_two, .section_three, .section_four, .section_five, #billing_address{
+background-color: #F5F3F3;
+}
+
+#company {
+color: #999999;
+font-size: 1.2em;
+font-weight: bold;
+}
+
+#content {
+font-family: "Georgia, Utopia, 'Times New Roman', Times, serif";
+font-size: 13px;
+border: none;
+}
+
+#total {
+background-color: #ECDAE0;
+}
+
+#subscription_submit {
+background-image: none;
+background-color: #bf6f88;
+color: white;
+font-weight: 100;
+}
+
+#subscription_coupon_code {
+background-color: #F8E8EE;
+}
+
+#subscription_submit {
+font-family: "Georgia, Utopia, 'Times New Roman', Times, serif";
+}
