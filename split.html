@@ -1,8 +1,13 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="assets/css/splitstyle.css">
+  <script type="text/javascript" src="assets/css/splitscript.js"></script>
+</head>
+
 <script>
   
   window.fbAsyncInit = function() {
   FB.init({
-    appId      : '1432869063653754',
+    appId      : 'APP_ID_HERE',
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page
@@ -25,9 +30,7 @@ function fb_login(){
             FB.api('/me', function(response) {
                 user_email = response.email; 
                 console.log("hello " + response.name);
-                document.getElementById("em_l").value= response.email;
-                document.getElementById("pw_l").value=response.id;
-                document.getElementById("customer_login").submit();
+                //user information can be stored here
             });
 
         } else {
