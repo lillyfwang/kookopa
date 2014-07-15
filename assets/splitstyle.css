@@ -1,0 +1,189 @@
+
+#split-container-background{
+  background: white no-repeat center center fixed;
+  position:fixed;
+  background-size: cover;
+  top:0px;
+  left:0;
+  min-width:100%;
+  min-height:100%;
+  overflow: scroll;
+}
+
+#split-nav{
+  font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+  width: 100%;
+  height: 100px;
+}
+
+#split-logo{
+  padding: 1em 0 0 1em;
+  width: 20%;
+  float: left;
+}
+
+#split-login{
+  padding: 3em 1em 0 0;
+  margin-right:1em;
+  float: right;
+  width: 18em;
+}
+
+#split-email{
+  cursor:pointer;
+  margin:0 1em 0 0;
+  border-bottom: gray dotted 1px;
+  width: 4em;
+  float: left;
+}
+
+#split-email:hover{
+  border-bottom: gray solid 1px;
+}
+
+.ui-dialog{
+  background: rgba(255,255,255, 0.9);
+  text-align: center;
+  padding: 2em;
+  border: gray solid 10px;
+  border-radius: 5px;
+}
+
+.ui-dialog-title{
+  font-size: 2em;
+}
+
+.ui-button{
+  position: absolute;
+  right: 0;
+  top:0;
+  border-radius: 0;
+  margin: 0 1em 2em 0;
+  padding: 0;
+  background: none;
+  color: black;
+  width: 3em;
+  cursor: pointer;
+  
+}
+
+.ui-button:hover{
+  background: none;
+  color: black;
+}
+
+#split-fb{
+  cursor: pointer;
+  margin:0;
+  padding: 0;
+  border-bottom: gray dotted 1px;
+  width: 9em;
+  float: right;
+}
+
+#split-fb:hover{
+  border-bottom: gray solid 1px;
+}
+
+
+#split-container{
+  width: 100%;
+  height: 600px;
+  overflow: scroll;
+}
+
+/* style for the information page */
+#split-left{
+  width:50%;
+  height: 100%;
+  float: left;
+  background:no-repeat; 
+  background-size: cover;
+  background-image: url('http://media.tumblr.com/tumblr_lchyc6Qbd61qcjxe0.jpg');
+  border-right: white solid 5px;
+}
+
+/* style for the rental options page */
+#split-left2{
+  width:50%;
+  height: 525px;
+  float: left;
+  background:no-repeat; 
+  background-size: cover;
+  background-image: url('http://popularphotographybiz.com/wp-content/uploads/2014/02/fashion-clothes-photographyclothes-cute-fashion-girl-photo-photography---inspiring-canvkk8h.jpg');
+  border-right: white solid 5px;
+}
+
+/* style for the information page */
+#split-right{
+  width: 50%;
+  height:100%;
+  float: right;
+  border-left: white solid 5px;
+  background: no-repeat;
+  background-size: cover;
+  background-image: url('http://checknewstyle.com/wp-content/uploads/2014/06/tumblr_mbqg1fXYsQ1qcoiv2o1_500.jpg');
+}
+
+/* style for the rental options page */
+#split-right2{
+  width: 50%;
+  height:525px;
+  float: right;
+  border-left: white solid 5px;
+  background: no-repeat;
+  background-size: cover;
+  background-image: url('http://lefemmefashionista.files.wordpress.com/2013/01/dress-fashion-paris-photography-favim-com-269866.jpg');
+}
+
+#split-text-container{
+  position: relative;
+  text-align: center;
+  top: 50%;
+  padding: 2em;
+  background:rgba(0,0,0,.5);
+}
+
+#split-text{
+  color: white;
+}
+
+#split-text-container:hover{
+  background: rgba(0,0,0,.7);
+}
+
+#split-more{
+  clear:both;
+  margin: 2em;
+  padding: 2em 0;
+  height: 500px;
+  text-align: center;
+}
+
+/* MOBILE DEVICES STYLING SPLIT PAGE */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+
+  /* Styles */
+  
+  #split-text-container{
+    position: relative;
+    text-align: center;
+    top:2%;
+    padding: 2em;
+    background:rgba(0,0,0,.5);
+  }
+  
+  #split-logo{
+    width: 75%
+  }
+  
+  #split-text-container{
+    padding: 1em;
+  }
+
+  
+} /*not an extra bracket, closes mobile*/
+
+/* END SPLIT CSS STYLING */

@@ -1,0 +1,231 @@
+ <script>
+  
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '1432869063653754',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.0' // use version 2.0
+  });
+
+  };
+   
+//CREATES A NEW CUSTOMER WHEN "SIGN UP" BUTTON IS CLICKED
+function fb_signup(){
+    FB.login(function(response) {
+
+        if (response.authResponse) {
+            console.log('Welcome!  Fetching your information.... ');
+            //console.log(response); // dump complete info
+            access_token = response.authResponse.accessToken; //get access token
+            user_id = response.authResponse.userID; //get FB UID
+
+            FB.api('/me', function(response) {
+                user_email = response.email; 
+              	console.log("hello " + response.name);
+              	//save user information here, removed for privacy
+            });
+
+        } else {
+            //user hit cancel button
+            console.log('User cancelled login or did not fully authorize.');
+
+        }
+    }, {
+        scope: 'public_profile,email'
+    });
+}
+   
+   
+//SIGNS IN A CUSTOMER WHEN "LOGIN" BUTTON IS CLICKED   
+function fb_login(){
+    FB.login(function(response) {
+
+        if (response.authResponse) {
+            console.log('Welcome!  Fetching your information.... ');
+            console.log(response); // dump complete info
+            access_token = response.authResponse.accessToken; //get access token
+            user_id = response.authResponse.userID; //get FB UID
+
+            FB.api('/me', function(response) {
+                user_email = response.email; 
+              	console.log("hello " + response.name);
+              	//save user information here, removed for privacy
+            });
+
+        } else {
+            //user hit cancel button
+            console.log('User cancelled login or did not fully authorize.');
+
+        }
+    }, {
+        scope: 'public_profile,email'
+    });
+}
+   
+(function() {
+    var e = document.createElement('script');
+    e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+    e.async = true;
+    document.getElementById('fb-root').appendChild(e);
+}());
+    
+</script>
+
+
+
+
+<div id="landing-background">
+<article class="page-content">
+  <!-- NAV BAR DIV -->
+
+
+<div id="landing-nav"> <br>
+  <h6> Signing up and browsing the site is FREE!<br>Already a member? Click Log In to continue.<br></h6>
+  <div id="landing-register">Sign Up</div>
+  <div id="landing-login">Log In</div>
+</div>  
+  
+  
+  <div class="rte">
+    
+
+<!-- FACEBOOK FORMS, ALL HIDDEN (USER CANNOT SEE) -->
+
+	<div class="account-contnt" style="display:none;">
+
+    {% form 'create_customer' %}
+  	  <input type="hidden" name="checkout_url" value="/" />
+      <div class="input-wrapper first-name">
+        <label for="customer[first_name]"></label>
+        <input id="fn_su" type="hidden" type="text" value="" name="customer[first_name]">
+      </div>
+      <div class="input-wrapper last-name">
+        <label for="customer[last_name]"></label>
+        <input id="ln_su" type="hidden" type="text" value="" name="customer[last_name]">
+      </div>
+      <div class="input-wrapper email">
+        <label for="customer[email]"></label>
+        <input id="em_su" type="hidden" type="email" value="" name="customer[email]">
+      </div>
+      <div class="input-wrapper password">
+        <label for="customer[password]"></label>
+        <input id="pw_su" type="hidden" type="password" value="" name="customer[password]">
+      </div>
+    {% endform %} 
+
+      {% form 'customer_login' %}
+      <input type="hidden" name="checkout_url" value="/" /> 
+      <input id="em_l"  type="hidden" type="email" placeholder="your@email.com" value="" name="customer[email]">
+      <input id="pw_l"  type="hidden" type="password" name="customer[password]">
+      {% endform %}
+  
+	</div>    
+    
+
+
+<!-- INFO PAGE -->
+    <div id = "landing-welcome">
+      <!-- KOOKOPA LOGO GOES HERE -->
+      <img id="logo" src="http://i739.photobucket.com/albums/xx34/melbelle627/logo_zps2b8666bf.png"><br>
+      <p style="color:white" font-weight="normal">Borrow your dream designer closet from New York's most<br> fashionable women for a fraction of the price
+      </p>
+    </div>
+    
+    
+<!-- SIGN UP FORM -->    
+    <div id="landing-signup-form" style="display:none" class="landing-forms">
+
+    <div id="landing-signup">
+      
+  	<div class="account-content" id="signup">
+      <div class="fb_icon">
+      <span class="entypo-user-add" onclick="fb_signup();"> Sign Up with Facebook</span> <br>
+      </div>
+      <br><p id="instructions">OR CREATE AN ACCOUNT</p>
+    {% form 'create_customer' %}
+      <input type="hidden" name="return_to" value="/" /> 
+
+      {% if form.errors %}
+      <div>
+        <p><span class="error">Oops, sorry.</span> We were unable to submit your registration because it contained {{ form.errors | size | pluralize: 'an error', 'a few errors' }}. Please correct the highlighted {{ form.errors | size | pluralize: 'field', 'fields' }} and submit again.</p>
+      </div>
+      {% endif %}
+
+      <div class="input-wrapper first-name" id="landing-input">
+        <label id="landing-white" for="customer[first_name]">First name</label>
+        <input id="landing-white" class="{% if form.errors contains "first_name" %}error{% endif %}" type="text" placeholder="" value="{{ form.first_name }}" name="customer[first_name]">
+      </div>
+
+      <div class="input-wrapper last-name" id="landing-input">
+        <label id="landing-white" for="customer[last_name]">Last name</label>
+        <input id="landing-white" class="{% if form.errors contains "last_name" %}error{% endif %}" type="text" placeholder="" value="{{ form.last_name }}" name="customer[last_name]">
+      </div>
+
+      <div class="input-wrapper email" id="landing-input">
+        <label id="landing-white" for="customer[email]">Email {% if form.errors contains "email" %}<span class="error">{{ form.errors.messages.email }}</span>{% endif %}</label>
+        <input id="landing-white" class="{% if form.errors contains "email" %}error{% endif %}" type="email" placeholder="your@email.com" value="{{ form.email }}" name="customer[email]">
+      </div>
+
+      <div class="input-wrapper password" id="landing-input">
+        <label id="landing-white" for="customer[password]">Password {% if form.errors contains "password" %}<span class="error">{{ form.errors.messages.password }}</span>{% endif %}</label>
+        <input id="landing-white" class="{% if form.errors contains "password" %}error{% endif %}" type="password" placeholder="" value="" name="customer[password]">
+      </div>
+
+      <div class="input-wrapper" id="landing-input">
+        <input type="submit" value="Submit">
+      </div>
+		<br><br><br>
+    {% endform %}
+
+  	</div>
+    </div>
+	</div>  
+    
+<!-- LOG IN FORM -->
+  <div id="landing-login-form" style="display:none" class="landing-forms">
+    
+  <div id="landing-signup">
+
+  <div class="account-content" id="signup">
+    <div class="fb_icon">
+    <span class="entypo-users" onclick="fb_login();"> Log In with Facebook</span><br>
+    </div>
+    <br><p id="instructions">OR LOG IN WITH EMAIL</p> 
+    <div class="account-login">
+      {% form 'customer_login' %}
+      <input type="hidden" name="checkout_url" value="/" /> 
+
+        {% if form.errors %}
+          <p><span class="error">Sorry!</span> Please try that again.</p>
+        {% endif %}
+
+        <div class="input-wrapper email">
+          <label id="landing-white">Email</label>
+          <input id="landing-white" type="email" placeholder="your@email.com" value="" name="customer[email]">
+        </div>
+
+        <div class="input-wrapper password">
+          <label id="landing-white">Password</label>
+          <input id="landing-white" type="password" name="customer[password]">
+        </div>
+
+        <div class="input-wrapper">
+          <input type="submit" value="Submit">
+        </div>
+		<br><br>
+      {% endform %}
+    </div>
+
+    </div>
+    </div>
+    </div>
+    
+  
+  </div> <!-- rte div -->
+
+</article>
+  
+</div>
+

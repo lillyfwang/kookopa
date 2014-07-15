@@ -1,0 +1,141 @@
+
+#landing-background{
+  background: url(http://cdn.shopify.com/s/files/1/0331/3273/files/shutterstock_149064038_small.jpg?10413)  no-repeat center center fixed;
+  position:fixed;
+  background-size: cover;
+  top:0px;
+  left:0;
+  min-width:100%;
+  min-height:100%;
+}
+
+#landing-signup{
+  height:100%;
+  width:100%;
+  margin-top: .5em;
+  padding: 2em;
+}
+
+#signup{
+  text-align:center;
+}
+
+#landing-input{
+  margin-bottom:10px;
+}
+
+#landing-white{
+  color:white;
+  text-align:center;
+}
+
+#landing-welcome{
+  padding: 1.5em;
+  margin-top:16%;
+  text-align: center;
+  background:black;
+  background: rgba(0,0,0,.6);
+  border-radius:1em;
+  border: 2px double white;
+}
+
+#landing-welcome p{
+  color: white;
+  font-family: Perpetua, Baskerville, "Big Caslon", "Palatino Linotype", Palatino, "URW Palladio L", "Nimbus Roman No9 L", serif;
+  font-size:1.6em;
+  font-weight:200;
+  margin-bottom:10px;
+}
+
+#landing-nav{
+  width:100%;
+  border:1px solid black;
+  text-align:center;
+  background:rgba(255,255,255, .9);
+  height:90px;
+}
+
+#landing-register{
+  cursor: pointer;
+  background-color: #000000;
+  margin:0em 1em 1em 1em;
+  padding: 1.3em;
+  color:white;
+  border-radius:2px;
+  border: 1px dotted white;
+  display: inline-block;
+  font-weight:600;
+}
+
+#landing-login{
+  cursor: pointer;
+  background-color:#000000;
+  margin:0em 1em 1em 1em;
+  padding: 1.3em;
+  border-radius:2px;
+  color:white;
+  border: 1px dotted white;
+  display: inline-block;
+  float:center;
+  font-weight:600;
+}
+
+#logo{
+  width:75%;
+}
+
+.landing-forms{
+  height: 500px;
+  overflow: scroll;
+  margin: 4% 20%;
+  background:gray;
+  background: rgba(0,0,0,.65);
+  border-radius:1em;
+  border:2px dotted white;
+}
+
+/* MOBILE DEVICES STYLING LANDING PAGE */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+/* Styles */
+html,body { height:100%; }
+  
+#landing-background{
+  background: url(http://cdn.shopify.com/s/files/1/0331/3273/files/landing_mobile.jpg?13182)  no-repeat center center fixed;
+  position:fixed;
+  background-size: cover;
+  top:0px;
+  left:0;
+}
+
+.landing-forms{
+  margin: 10% 0%;
+  height: 310px;
+}
+  
+} /*not an extra bracket, closes mobile*/
+
+#instructions{
+  color: white;
+  font-weight:600;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-style: solid none;
+  border-width: 2px;
+}
+
+.fb_icon{
+  cursor: pointer;
+  color:white;
+  font-size:2em;
+  background: rgba( 109, 132, 180, .8); 
+  border-radius: 5px; 
+  padding: 4px; 
+}
+
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+

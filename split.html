@@ -1,0 +1,122 @@
+<script>
+  
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '1432869063653754',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.0' // use version 2.0
+  });
+
+  };
+   
+   
+//SIGNS IN A CUSTOMER WHEN "LOGIN" BUTTON IS CLICKED   
+function fb_login(){
+    FB.login(function(response) {
+
+        if (response.authResponse) {
+            console.log('Welcome!  Fetching your information.... ');
+            //console.log(response); // dump complete info
+            access_token = response.authResponse.accessToken; //get access token
+            user_id = response.authResponse.userID; //get FB UID
+
+            FB.api('/me', function(response) {
+                user_email = response.email; 
+                console.log("hello " + response.name);
+                document.getElementById("em_l").value= response.email;
+                document.getElementById("pw_l").value=response.id;
+                document.getElementById("customer_login").submit();
+            });
+
+        } else {
+            //user hit cancel button
+            console.log('User cancelled login or did not fully authorize.');
+
+        }
+    }, {
+        scope: 'public_profile,email'
+    });
+}
+   
+(function() {
+    var e = document.createElement('script');
+    e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+    e.async = true;
+    document.getElementById('fb-root').appendChild(e);
+}());
+    
+</script>
+
+
+
+
+<div id="split-container-background">
+
+  <div id="split-nav">
+    <img src="http://cdn.shopify.com/s/files/1/0331/3273/files/Kookopa_Logo_970.jpg?13619" id="split-logo"/>
+    <div id="split-login">
+      <div>
+        <p id="split-email">LOG IN</p>
+        - or -  
+        <p id="split-fb" onclick="fb_login();"> FACEBOOK LOGIN </p></div>
+    </div> <!-- end of split login -->
+  </div> <!-- end of split nav -->
+  
+  <div id="split-container">
+    <div id="split-left">
+      <div id="split-text-container">
+        <h2 id="split-text">Borrow</h2>
+        <p id="split-text"> Rent designer items on Kookopa for a fraction of the retail price from fellow lenders on the site. </p>
+        <a href="http://www.kookopa.com/pages/rental-options"> Discover different ways to rent items! </a>
+      </div>
+    </div>
+  
+    <div id="split-right">
+      <div id="split-text-container">
+        <h2 id="split-text">Lend</h2>
+        <p id="split-text"> Lend your designer clothing and see others flaunt your style. Make money on each rental to make each piece pay off. </p>
+        <a href="http://www.kookopa.com/pages/rent-your-closet">Find out how to list your items!</a>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+     <!-- EMAIL ACCOUNT LOGIN FORM POPUP -->
+    <div id="split-email-login" title="Login with Email">
+      <div class="account-login">
+      {% form 'customer_login' %}
+      <input type="hidden" name="checkout_url" value="/" /> 
+        {% if form.errors %}
+          <p><span class="error">Sorry!</span> Please try that again.</p>
+        {% endif %}
+        <div class="input-wrapper email">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com" value="" name="customer[email]">
+        </div>
+        <div class="input-wrapper password">
+          <label>Password</label>
+          <input type="password" name="customer[password]">
+        </div>
+        <div class="input-wrapper">
+          <input type="submit" value="Submit">
+        </div>
+      {% endform %}
+      </div>
+    </div>
+    
+    <!-- HIDDEN FACEBOOK LOGIN FORM -->
+    {% form 'customer_login' %}
+      <input type="hidden" name="checkout_url" value="/" /> 
+      <input id="em_l"  type="hidden" type="email" placeholder="your@email.com" value="" name="customer[email]">
+      <input id="pw_l"  type="hidden" type="password" name="customer[password]">
+    {% endform %}
+    
+    
+  </div><!-- end split container div -->
+  
+  
+  
+</div> <!-- end background div -->
