@@ -13,13 +13,22 @@
 #split-nav{
   font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
   width: 100%;
-  height: 100px;
 }
 
 #split-logo{
   padding: 1em 0 0 1em;
   width: 20%;
   float: left;
+}
+
+#split-slogan{
+  font-family:"Gill Sans", "Gill Sans Light", Calibri, sans-serif;
+  font-weight: 100;
+  font-size: 1.25em;
+  color: black;
+  display: inline-block;
+  margin: 2em 0 0 9em;
+  text-align: center;
 }
 
 #split-login{
@@ -56,20 +65,24 @@
 .ui-button{
   position: absolute;
   right: 0;
-  top:0;
+  top:0px;
   border-radius: 0;
   margin: 0 1em 2em 0;
   padding: 0;
   background: none;
   color: black;
   width: 3em;
-  cursor: pointer;
-  
+  cursor: pointer; 
 }
 
 .ui-button:hover{
   background: none;
   color: black;
+}
+
+.ui-button-text {
+  padding: 0;
+  text-indent: 0;
 }
 
 #split-fb{
@@ -99,18 +112,18 @@
   float: left;
   background:no-repeat; 
   background-size: cover;
-  background-image: url('http://media.tumblr.com/tumblr_lchyc6Qbd61qcjxe0.jpg');
+  background-image: url('http://i739.photobucket.com/albums/xx34/melbelle627/8f5352ca-1ada-41d5-9152-a1c67b549a7d_zpsd3399ddd.jpg');
   border-right: white solid 5px;
 }
 
 /* style for the rental options page */
 #split-left2{
   width:50%;
-  height: 525px;
+  height: 550px;
   float: left;
   background:no-repeat; 
   background-size: cover;
-  background-image: url('http://popularphotographybiz.com/wp-content/uploads/2014/02/fashion-clothes-photographyclothes-cute-fashion-girl-photo-photography---inspiring-canvkk8h.jpg');
+  background-image: url('http://i739.photobucket.com/albums/xx34/melbelle627/ee8b1ba0-0ee8-4414-9274-73110137fb90_zpsc3f7f5a0.jpg');
   border-right: white solid 5px;
 }
 
@@ -122,18 +135,18 @@
   border-left: white solid 5px;
   background: no-repeat;
   background-size: cover;
-  background-image: url('http://checknewstyle.com/wp-content/uploads/2014/06/tumblr_mbqg1fXYsQ1qcoiv2o1_500.jpg');
+  background-image: url('http://i739.photobucket.com/albums/xx34/melbelle627/1f382cdf-7bbf-4f20-9bcb-8d28df0552f5_zps5d2155e4.jpg');
 }
 
 /* style for the rental options page */
 #split-right2{
   width: 50%;
-  height:525px;
+  height:550px;
   float: right;
   border-left: white solid 5px;
   background: no-repeat;
   background-size: cover;
-  background-image: url('http://lefemmefashionista.files.wordpress.com/2013/01/dress-fashion-paris-photography-favim-com-269866.jpg');
+  background-image: url('http://i739.photobucket.com/albums/xx34/melbelle627/0bb4d4a0-0c63-41e5-a22e-dcfc7f9175d2_zpsbb4a4a3c.jpg');
 }
 
 #split-text-container{
@@ -146,18 +159,309 @@
 
 #split-text{
   color: white;
+  font-family:"Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+}
+
+#split-text2{
+  font-family:"Gill Sans", "Gill Sans Light", Calibri, sans-serif;
+  font-weight: 100;
+  font-size: 1.3em;
+  color: white;
 }
 
 #split-text-container:hover{
   background: rgba(0,0,0,.7);
 }
 
-#split-more{
-  clear:both;
-  margin: 2em;
-  padding: 2em 0;
-  height: 500px;
+#split-intro{
+  clear: both;
+  /*padding: 10em 0 8em 0; split 2 css */
+  padding: 4em 0 3em 0;
   text-align: center;
+}
+
+#split-intro h1{
+  margin: 1em 0 1.5em 0;
+  font-weight: 400;
+}
+
+#split-step{
+  padding: 0 1.5em;
+  margin: 0 1em;
+  display: inline-block;
+  width: 23%;
+  text-align: left;
+}
+
+#split-step h4{
+  font-weight: 400;
+  margin: 0;
+}
+
+
+#tabs { 
+  font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+  background: transparent; 
+  border: none; 
+} 
+
+
+#tabs .ui-widget-header { 
+  background: transparent; 
+  border: none; 
+  border-bottom: 1px solid #978C9C; 
+  -moz-border-radius: 0px; 
+  -webkit-border-radius: 0px; 
+  border-radius: 0px; 
+  line-height: 0;
+} 
+
+#tabs .ui-tabs-nav .ui-state-default { 
+  background: transparent; 
+  border: 1px dotted #c0c0c0;
+  border-bottom: none;
+  font-weight: 200;
+  font-size: 1em;
+  margin: 0 9em;
+  /*padding: 1em 5em;*/
+} 
+
+#tabs .ui-tabs-nav .ui-state-active {  
+  border: none;
+  font-weight: 700;
+  border-radius: 0px;
+  border: 1px solid #978C9C;
+  font-size: 1em;
+  border-bottom: none;
+} 
+
+#tabs .ui-tabs-nav .ui-state-default a { 
+  color: #c0c0c0; 
+  outline-color: transparent;
+} 
+
+#tabs .ui-tabs-nav .ui-state-active a { 
+  color: black; 
+  background: #F2EDF5;
+  outline-color: transparent;
+}
+
+#tabs .ui-tabs-nav { 
+  text-align: center; 
+} 
+
+#tabs .ui-tabs-nav li { 
+  display: inline-block; 
+  float: none; 
+}
+
+#tabs .ui-tabs-anchor{
+  padding: 2em 5em;
+}
+
+#split-designers{
+  font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+  padding: 8em 0;
+  text-align: center;
+}
+
+#split-designers h1{
+  font-weight: 400;
+  padding-bottom: 1em;
+}
+
+#split-why{
+  font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+  text-align: center;
+  /*height:40em;*/
+  padding: 0 4em;
+  margin-bottom: 2em;
+}
+
+#split-why h1{
+  font-weight: 400;
+  padding-top: 1.5em;
+  margin: 1.5em 0 1em 0;
+  border-top: 1px dotted gray;
+
+}
+
+#split-why-reason{
+  padding-top: 1em;
+  text-align: left;
+  width: 75%;
+  float: left;
+}
+
+#split-why-reason h5{
+  font-weight: 400;
+}
+
+#split-why-price{
+  margin-top: 4em;
+  padding: 2.5em;
+  text-align: center;
+  width: 25%;
+  height: 100%;
+  float: right;
+  border: 8px solid #C8C5D9;
+  background: #FEFAFF;
+  font-weight: 400;
+}
+
+#split-why-price h1{
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+#split-why-price-blurb{
+  text-align: left;
+}
+
+#split-gallery{
+  font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+  background: #f5f5f5;
+  text-align: center;
+  padding: 3em;
+}
+
+#split-gallery-container{
+  margin: 0 auto;
+  height: 45em;
+  max-height:1000px; 
+  width: 75%;
+  max-width: 1000px;
+  overflow: hidden;
+}
+
+#split-gallery h1{
+  font-weight: 400;
+  margin-bottom: 1em;
+}
+
+.split-gallery-portrait{
+  width: 100%;
+}
+
+.split-gallery-landscape{
+  height: 100%;
+}
+
+#split-gallery-1{
+  width: 67%;
+  height: 67%;
+}
+
+#split-gallery-2{
+  height: 34%;
+  width: 33%;
+}
+
+#split-gallery-3{
+  height: 33%;
+  width: 33%;
+}
+
+#split-gallery-4{
+  height: 33%;
+  width: 34%
+}
+
+#split-gallery-5{
+  height: 33%;
+  width: 33%;
+}
+
+#split-gallery-6{
+  height: 33%;
+  width: 33%;
+}
+
+.split-gallery-img{
+  float:left;
+  position: relative;
+  margin: 0;
+  display: block;
+  padding:0;
+}
+
+.split-gallery-hidden{
+  font-family:"Gill Sans", "Gill Sans Light", Calibri, sans-serif;
+  font-weight: 100;
+  font-size: 2em;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding-top: 30%;
+  background: rgba(255,255,255, .7);
+  color: black;
+  opacity: 0;
+   -webkit-transition: opacity .4s ease-in-out;
+  -moz-transition: opacity .4s ease-in-out;
+  -ms-transition: opacity .4s ease-in-out;
+  -o-transition: opacity .4s ease-in-out;
+  transition: opacity .4s ease-in-out;
+}
+
+.split-gallery-hidden:hover{
+  opacity: 1;
+}
+
+#split-faq{
+  font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+  text-align: center;
+  /*height: 80em;*/
+  padding:8em 3em 3em 3em;
+  display: block;
+}
+
+#split-faq h1{
+  font-weight: 400;
+  margin-bottom: 1em;
+}
+
+#split-questions-left{
+  width: 50%;
+  float: left;
+  border-right: 1px dotted gray;
+}
+
+#split-questions-right{
+  width: 50%;
+  float: right;
+}
+
+#split-question{
+  text-align: left;
+  padding: 1.5em 2em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+#split-more{
+  font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+  clear: both;
+  font-weight: 400;
+  text-align: center;
+}
+
+#split-collage{
+  -webkit-transition: opacity 1.5s, margin-top 1.0s;
+  transition: opacity 1.5s, margin-top 1.0s;
+}
+
+#clear{
+    clear: both;
+    content: "";
+    display: block;
+}
+
+#split-mobile-clear{
+  color: white;
+  height: 8em;
 }
 
 /* MOBILE DEVICES STYLING SPLIT PAGE */
@@ -176,11 +480,108 @@ and (max-device-width : 480px) {
   }
   
   #split-logo{
-    width: 75%
+    width: 75%;
+    padding:0;
+    margin-left: 12%;
   }
   
   #split-text-container{
     padding: 1em;
+  }
+  
+  #split-step, #split-why-reason, #split-why-price,
+  #split-questions-left, #split-questions-right,
+  #split-intro, #split-designers, #split-why,
+  #split-faq, #split-more, #split-questions,
+  #split-gallery, #split-gallery-container, #split-icon,
+  #split-left, #split-left2, #split-right, #split-right2,
+  #split-slogan, #split-mobile-clear, .mobify{
+    clear: both;
+    display: block;
+    padding-left: 0;
+    padding-right:0;
+    margin-left: 0;
+    margin-right:0;
+    width:100%;
+  }
+  
+  #split-mobile-clear{
+    height: 25em;
+  }
+
+  #split-left, #split-right{
+    height: 40%;
+    font-size: 1em;
+    border: none;
+  }
+    
+  #split-left, #split-right, #split-left2, #split-right2{
+    height: 50%;
+    border:none;
+  }
+  
+  #split-gallery-2, #split-gallery-3, #split-gallery-4,
+  #split-gallery-5, #split-gallery-6 {
+    width: 106px;
+    height: 106px;
+    overflow: hidden;
+  }
+  
+  #split-gallery-1{
+    width: 212px;
+    height: 212px;
+  }
+  
+  #split-gallery-container{
+    height: 320px;
+  }
+  
+  #split-gallery img{
+    height: 100%;
+  }
+  
+  .split-gallery-hidden{
+    font-family:"Gill Sans", "Gill Sans Light", Calibri, sans-serif;
+    font-weight: 100;
+    font-size: 1em;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 70%;
+    padding-top: 0;
+    background: rgba(255,255,255, .8);
+    color: black;
+    opacity: 1;
+  }
+
+  
+  #tabs .ui-tabs-nav .ui-state-default { 
+    background: transparent; 
+    border-bottom: none;
+    font-weight: 200;
+    font-size: 1em;
+    margin: 0;
+  } 
+  
+  #tabs .ui-tabs-nav .ui-state-active{
+    border-bottom: none;
+    font-weight: 600;
+  }
+  
+  #tabs .ui-tabs-anchor{
+    padding: 2em 2em;
+  }
+
+  
+  #split-login{
+    margin-top: 0;
+    margin-bottom:0;
+    padding-top:2px;
+    padding-bottom:0;
+  }
+  
+  h1{
+    font-size: 2em;
   }
 
   

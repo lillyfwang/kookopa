@@ -1,0 +1,389 @@
+<script>
+  
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : 'APP_ID_HERE',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.0' // use version 2.0
+  });
+
+  };
+   
+   
+//SIGNS IN A CUSTOMER WHEN "LOGIN" BUTTON IS CLICKED   
+function fb_login(){
+    FB.login(function(response) {
+
+        if (response.authResponse) {
+            console.log('Welcome!  Fetching your information.... ');
+            //console.log(response); // dump complete info
+            access_token = response.authResponse.accessToken; //get access token
+            user_id = response.authResponse.userID; //get FB UID
+
+            FB.api('/me', function(response) {
+                user_email = response.email; 
+              	console.log("hello " + response.name);
+              	/* store user data here */
+            });
+
+        } else {
+            //user hit cancel button
+            console.log('User cancelled login or did not fully authorize.');
+
+        }
+    }, {
+        scope: 'public_profile,email'
+    });
+}
+   
+(function() {
+    var e = document.createElement('script');
+    e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+    e.async = true;
+    document.getElementById('fb-root').appendChild(e);
+}());
+    
+</script>
+
+
+<div id="split-container-background">
+
+ {% if customer %}<!-- Show action links if they are logged in -->
+    
+  <div id="split-nav">
+    <a href="/pages/main"><img src="http://cdn.shopify.com/s/files/1/0331/3273/files/Kookopa_Logo_970.jpg?13619" id="split-logo"/></a>
+    
+    <div class="action-links" style="visibility: visible;">
+
+      <span class="mini-cart-toggle" onclick="window.location.href = '/cart'">Cart ({{ cart.item_count }})
+        {% if cart.item_count > 0 %}
+        <div class="mini-cart-wrapper">
+          <div class="mini-cart">
+
+            {% for item in cart.items %}
+            <div id="item-{{ item.id }}" class="item clearfix">
+              <div class="image-wrap">
+                <a href="{{ item.product.url }}">
+                  <img src="{{ item.product.featured_image | product_img_url: 'small' }}">
+                </a>
+              </div>
+              <div class="details">
+                <a href="{{ item.product.url }}">
+                  <p class="title">{{ item.product.title }}</p>
+                  <p class="price">{{ item.line_price | money }}</p>
+
+                  {% if item.variant.option1 != 'Default Title' %}
+                    <ul class="options">
+                    {% for i in (1..item.product.options.size) %}
+                      <li><span>{{ item.product.options[forloop.index0] }}:</span> {{ item.variant.options[forloop.index0] }}</li>
+                    {% endfor %}
+                    </ul>
+                  {% endif %}
+                </a>
+              </div>
+            </div>
+            {% endfor %}
+
+            <div class="checkout">
+              <a class="button" href="/checkout">Checkout</a>
+              or <a href="/cart">view cart</a>
+            </div>
+
+          </div>
+        </div>
+        {% endif %}
+      </span>
+
+      {% if shop.customer_accounts_enabled %}
+        {% if customer %}
+          <span class="mini-account-toggle" onclick="window.location.href = '/account'">Account
+            <div class="mini-account-wrapper">
+              <div class="mini-account">
+                <p>You are logged in as<br /> <a href="/account">{{ customer.name }}</a></p>
+                <p>{{ "Log out" | customer_logout_link }} or <a href="/account">Go to account</a></p>
+              </div>
+            </div>
+          </span>
+        {% else %}
+          {{ 'Log in' | customer_login_link }}
+        {% endif %}
+          {% include 'shopify-wishlist-link' %}
+      {% endif %}
+    </div>
+    </div> <!-- end of split nav -->
+    
+    {% else %} <!-- Show login/facebook login if they are not logged in -->
+    
+   <div id="split-nav">
+    <img src="http://cdn.shopify.com/s/files/1/0331/3273/files/Kookopa_Logo_970.jpg?13619" id="split-logo"/>
+    
+    <div id="split-login">
+      <div>
+        <p id="split-email">LOG IN</p>
+        - or -  
+        <p id="split-fb" onclick="fb_login();"> FACEBOOK LOGIN </p></div>
+    </div> <!-- end of split login -->
+  </div> <!-- end of split nav -->
+  
+  {% endif %} <!-- End checking if logged in or not -->
+  
+  <div id="split-container">
+    
+    <a href="http://www.kookopa.com/collections/subscription">
+    <div id="split-left2">
+      <div id="split-text-container">
+        <h2 id="split-text">Your Endless Closet</h2>
+        <p id="split-text2">Get three new designer pieces for work or play. Swap them out for <br>brand new looks every month.
+        With clothing, shoes, and accessories - <br>we've got you covered from head to toe.</p>
+      </div>
+    </div>
+    </a>
+    
+    <a href="http://www.kookopa.com/pages/events">
+    <div id="split-right2">
+      <div id="split-text-container">
+        <h2 id="split-text">Borrow for an Event</h2>
+        <p id="split-text2"> Women's lives are a series of events - weddings, interviews, dates, vacations. 
+         Rent an item for either five days, two weeks, or even up to a month. <br><br></p>
+      </div>
+    </div>
+    </a>
+    
+    <div id="split-intro">
+    <div id="tabs">
+        <ul>
+          <li><a href="#split-endless">Endless Closet</a></li>
+          <li><a href="#split-event">Event Rental</a></li>
+        </ul>
+        <!-- Monthly Rental -->
+        <div id="split-endless">
+          <h1>Experience your new endless closet when you subscribe</h1>
+        <div id="split-step-container">
+          <div id="split-step">
+            <h4> Pick your closet </h4>
+            Shop from our designer wardrobe and add your favorite three pieces to your closet for the next month. From clothing to accessories, we’ve got you covered.<br><br><br>
+          </div>
+          <div id="split-step">
+            <h4> Yours for the month </h4>
+            Receive your 3 pieces at the beginning of each month, and wear them as much as you like, whenever you like.<br><br><br><br>
+          </div>
+          <div id="split-step">
+            <h4> Rotate! </h4>
+            Choose your next three pieces by the 15th and just ship back last month’s items in the prepaid envelope. Dry-cleaning, insurance and shipping are included. Put your subscription on hold whenever you want.
+          </div>
+        </div>
+          
+        <div id="split-why">
+      	  <h1>Perks of subscribing for your endless closet</h1>
+      	<div id="split-why-container">
+          <div id="split-why-reason">
+            <img class="responsive" src="http://i739.photobucket.com/albums/xx34/melbelle627/math_zps85dfd449.jpg">
+          </div>
+          <div id="split-why-price">
+            <h1>$175</h1>
+            <span style="border-bottom: 1px dotted gray">per month</span><br><br>
+            <div id="split-why-price-blurb">
+              &#187; Three designer items per month<br>
+              &#187; Over a $1500 value<br>
+              &#187; Endless possibilities
+            </div>
+          </div>
+      	</div>
+        <div id="clear"></div>
+    	</div>
+     	     
+          
+        </div>
+        <!-- Event Rental -->
+        <div id="split-event">
+          <h1>Always be dressed to perfection at your events</h1>
+        <div id="split-step-container">
+          <div id="split-step">
+            <h4> Where are you going? </h4>
+            Select the event you are shopping for to see the curated collection of pieces that fits your occasion.<br><br><br>
+          </div>
+          <div id="split-step">
+            <h4> Book it </h4>
+            Select the 5 day, 2 week or even monthly period that you need your outfit. Your look will be delivered to you on the first day of your reservation. If it doesn’t fit, return it for free.
+          </div>
+          <div id="split-step">
+            <h4>  Return </h4>
+            Return your item in the prepaid envelope provided. Shipping is free both ways!<br><br><br><br>
+          </div>
+        </div>
+        </div>
+    </div> <!-- end tabs div -->
+    </div> <!-- end split intro div-->
+    
+    <div id="split-collage"> <!-- FIND NEW PICTURE TO PUT IN HERE -->
+      <img class="responsive" src="http://i739.photobucket.com/albums/xx34/melbelle627/6037ece5-e4d7-4080-bc14-2e0f59edfc23_zps72e5117f.jpg">
+    </div>
+    
+    <div id="split-designers">
+      <h1>Brands you love &#038; designers to discover</h1>
+      <img class="responsive" src="https://cdn.shopify.com/s/files/1/0331/3273/files/brands_102ef386-99e9-4b85-a850-ec17b9c88b51.jpg?17103">
+    </div>
+    
+    <div id="split-gallery">
+      <h1>Beautiful Gallery here. Oh my.</h1>
+      <div id="split-gallery-container">
+        <div id="split-gallery-1" class="split-gallery-img">
+          <a href="">
+            <div class="split-gallery-hidden">
+              Omg
+            </div>
+            <img class="split-gallery-landscape" src="http://i739.photobucket.com/albums/xx34/melbelle627/borrow2_zps21e3c987.jpg">
+          </a>
+        </div>
+        <div id="split-gallery-2" class="split-gallery-img">
+          <a href="">
+            <div class="split-gallery-hidden">
+              Yuss
+            </div>
+            <img class="split-gallery-portrait" src="http://i739.photobucket.com/albums/xx34/melbelle627/1adf0e25-480a-45dd-9a55-9995fc92bc1a_zps20799ef6.jpg">
+          </a>
+        </div>
+        <div id="split-gallery-3" class="split-gallery-img">
+          <a href="">
+            <div class="split-gallery-hidden">
+              This
+            </div>
+            <img class="split-gallery-portrait" src="http://i739.photobucket.com/albums/xx34/melbelle627/168772425_zpsf1b5d38b.jpg">
+          </a>
+        </div>
+        <div id="split-gallery-4" class="split-gallery-img">
+          <a href="">
+            <div class="split-gallery-hidden">
+              !!!!
+            </div>
+            <img class="split-gallery-portrait" src="http://i739.photobucket.com/albums/xx34/melbelle627/a46c6cf6-3548-4954-9614-9632d9fb5b47_zps94a357b0.jpg">
+          </a>
+        </div>
+        <div id="split-gallery-5" class="split-gallery-img">
+          <a href="">
+            <div class="split-gallery-hidden">
+              Werkss
+            </div>
+            <img class="split-gallery-portrait" src="http://i739.photobucket.com/albums/xx34/melbelle627/ddaae564-e6a5-43e4-897b-135329f47189_zps7c86ffd7.jpg">
+          </a>
+        </div>
+        <div id="split-gallery-6" class="split-gallery-img">
+          <a href="">
+            <div class="split-gallery-hidden">
+              Really
+            </div>
+            <img class="split-gallery-portrait" src="http://i739.photobucket.com/albums/xx34/melbelle627/f3ea4397-d7cd-4716-8f39-45913cfe7497_zps05a82ade.jpg">
+          </a>
+        </div>
+      </div>
+      <div id="clear"></div>
+    </div>
+    
+    
+    <div id="split-faq">
+      <h1> Frequently Asked Questions </h1>
+      
+      <div id="split-questions-left">
+        <h3 style="font-weight: 400; padding: 1em 0 0 0">Subscription FAQ</h3>
+        <div id="split-question">
+          <h5>How does it work?</h5>
+          For $175 a month, you recieve 3 designer items from our Monthly Subscription collection. Add your choices to your wishlist by the 15th of every month, and
+          the items will then be shipped to you. Keep them for the next month, and then just return them in the prepaid envelope at the end of the month.
+        </div>
+        <div id="split-question">
+          <h5>How do I receive / return my items?</h5>
+          The items are shipped at the beginning of the month, and you should receive them in the mail within the first week of every month. At the end of the month,
+          just put them back in the resealable envelope provided with the prepaid shipping label. Drop the envelope in any mailbox.
+        </div>
+        <div id="split-question">
+          <h5>What if the item I selected is unavailable that month?</h5>
+          If the item is unavailable, our stylists will pick similar outfits and send them to you to choose a different item. We will try and include the item you
+          selected in the next month's box.
+        </div>
+        <div id="split-question">
+          <h5>What if an item doesn't fit?</h5>
+          In case an item doesn't fit, notify us at info@kookopa.com within the first 24 hours of receiving the item. Just return the item within 24 hours of contacting 
+          us in the prepaid resealable envelope provided. We will then add an extra item to your box for the next month.
+        </div>
+        <div id="split-question">
+          <h5>Can I place my subscription on hold?</h5>
+          Yes. You can place your subscription on hold at any time. In order for the hold to be effective the following month, you must notify us by the 25th of the previous month
+          (sorry, we can't put it on hold once the items are shipped out!)
+        </div>
+      </div>
+      
+      <div id="split-questions-right">
+        <h3 style="font-weight: 400; padding: 1em 0 0 0">Event Rental FAQ</h3>
+        <div id="split-question">
+          <h5>I liked a dress but it wasn’t in my size. How do the sizes work?</h5>
+          We’re not a store so we don’t have multiple sizes of each item. These are real peoples’ treasures so we likely only have one of each piece. We provide the models
+          measurements so you can match your measurements to hers to find out if the item works for you. We use "real world" models that fit the exact size, and don't clip the items or photoshop the pictures.
+          These are real women's items that have fit them, and you can always email a lender to ask them questions or chat with our stylist.
+        </div>
+        <div id="split-question">
+          <h5>Who handles cleaning the item?</h5>
+          After every rental, we have the item dry cleaned before it is returned to the lender.
+        </div>
+        <div id="split-question">
+          <h5>I can’t seem to rent in my area. Where are you operating?</h5>
+          We currently offering rentals within the United States, excluding Alaska and Hawaii. We are only sourcing lenders within the Tri-State area (New York, New Jersey, Connecticut). 
+        </div>
+        <div id="split-question">
+          <h5>When should I have the item delivered?</h5>
+          We never want you to worry about receiving an item on time. We deliver up to 8pm of the day of your delivery request, so if you are going out of town, or need it that night, order it for the day before.
+          For a 2 day rental, if your event is a Saturday, have it delivered on the Friday and return it on Sunday. 
+        </div>
+        <div id="split-question">
+          <h5>Can I purchase the item if I like it?</h5>
+          At this time we are only offering rentals, but we may expand that offering depending on the interest from our borrowers and lenders. So if you do want to purchase something, send us a note and we’ll keep it in mind.
+        </div>
+      </div>
+      <div id="clear"></div>
+    </div> <!--end faq section-->
+    
+    <h4 id="split-more"> Still want more information on how to borrow items? Check out
+      our <a style="color: #bf6f88; font-weight: 600;" href="http://www.kookopa.com/pages/frequently-asked-questions"> extended FAQ</a>.
+    </h4>
+    
+    <div id="split-mobile-clear">
+      Hello this is just to make the info page better scrolling.
+    </div>
+    
+  </div><!-- end split container div -->
+    
+</div> <!-- end background div -->
+
+
+    
+    
+    <!-- EMAIL ACCOUNT LOGIN FORM POPUP -->
+    <div id="split-email-login" title="Login with Email">
+  	  <div class="account-login">
+      {% form 'customer_login' %}
+      <input type="hidden" name="checkout_url" value="/" /> 
+        {% if form.errors %}
+          <p><span class="error">Sorry!</span> Please try that again.</p>
+        {% endif %}
+        <div class="input-wrapper email">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com" value="" name="customer[email]">
+        </div>
+        <div class="input-wrapper password">
+          <label>Password</label>
+          <input type="password" name="customer[password]">
+        </div>
+        <div class="input-wrapper">
+          <input type="submit" value="Submit">
+        </div>
+      {% endform %}
+      </div>
+	</div>
+    
+    <!-- HIDDEN FACEBOOK LOGIN FORM -->
+    {% form 'customer_login' %}
+      <input type="hidden" name="checkout_url" value="/" /> 
+      <input id="em_l"  type="hidden" type="email" placeholder="your@email.com" value="" name="customer[email]">
+      <input id="pw_l"  type="hidden" type="password" name="customer[password]">
+    {% endform %}
